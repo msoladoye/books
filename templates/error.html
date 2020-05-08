@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends "layout.html"%}
+<!-- <html lang="en"> -->
+
+{%block title%}ERROR{%endblock%}
+<!-- <body> -->
+
+{%block body%}
+<nav class="alert alert-secondary navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="{{url_for('index')}}">
+        <h3><small>Go to home page</small></h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{{url_for('log_out')}}" tabindex="-1" aria-disabled="true">Log
+                out</a>
+        </div>
+    </div>
+</nav>
+    <h1>ERROR: {{error}}</h1>
+{%endblock%}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% extends "layout.html"%}
+<!-- <html lang="en"> -->
+
+{%block title%}Home page{%endblock%}
+<!-- <body> -->
+
+{%block body%}
+<nav class="alert alert-secondary navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="{{url_for('index')}}">
+        <h3>{{username.capitalize()}}'s <small>Book Library</small></h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="{{url_for('log_out')}}" tabindex="-1" aria-disabled="true">Log
+                out</a>
+        </div>
+    </div>
+</nav>
+<section class="container">
+    <section>
+        <form action="{{url_for('searchDb')}}" method="POST">
+            <div class="row float-lg-left">
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <input class="form-control" type="number" name="isbn" placeholder="isbn">
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <input class="form-control " type="text" name="title" placeholder="title">
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <input class="form-control " type="text" name="author" placeholder="author">
+                </div>
+                <!-- <div class="col-lg-3 col-md-6 col-sm-12">
+                    <input class="form-control" type="year" name="year" placeholder="year">
+                </div> -->
+            </div>
+            <div class="float-lg-right">
+                <button class="btn btn-success rounded">serach</button>
+            </div>
+        </form>
+    </section>
+    <section>
+        <table class="table table-responsive table-hover table-light">
+            <thead>
+                <tr>
+                    <th>ISBN</th>
+                    <th>TITLE</th>
+                    <th>AUTHOE</th>
+                    <th>YEAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                {%for match in searchMatch%}
+                <tr>
+                    <td>{{match.isbn}}</td>
+                    <td>{{match.title}}</td>
+                    <td>{{match.author}}</td>
+                    <td>{{match.year}}</td>
+                    <td><a href="{{url_for('books',book_id=match.id)}}">view book</a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </section>
+</section>
+{%endblock%}
+
+{%block footer%}
+{%endblock%}
