@@ -2,3 +2,8 @@ Flask
 Flask-Session
 psycopg2-binary
 SQLAlchemy
+
+Harvar CS50 project1 - Book Library
+Search (showing multiple results for a query): 00:30
+Individual book page showing leaving a review: 01:10
+API page: 02:00
